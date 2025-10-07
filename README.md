@@ -15,3 +15,9 @@
   --header 'Content-Type: application/json'
 
   ```
+
+- ### Running with docker compose
+  Inside the project, run the following command to run the application:
+  ```bash
+  $ docker compose up -d
+  ```

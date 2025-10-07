@@ -3,10 +3,11 @@ package controllers
 import (
 	"time"
 
+	"sync"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/pretorian41/goaggregate/models"
 	"github.com/pretorian41/goaggregate/services"
-	"sync"
 )
 
 func GetLoadAggregate(ctx *fiber.Ctx) error {
@@ -28,6 +29,13 @@ func GetLoadAggregate(ctx *fiber.Ctx) error {
 		},
 		{
 			URL: "127.0.0.1:8080/api/agg/3",
+			Priorities: map[string]int{
+				"avatar_url": 0,
+				"name":       1,
+			},
+		},
+		{
+			URL: "127.0.0.1:8080/api/agg/4",
 			Priorities: map[string]int{
 				"avatar_url": 0,
 				"name":       1,

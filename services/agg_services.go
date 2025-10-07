@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
 	"github.com/pretorian41/goaggregate/models"
 	"github.com/pretorian41/goaggregate/utils"
 )
@@ -12,9 +13,13 @@ import (
 func FetchFromAPI(source string, id string) models.ApiResult {
 	resp, err := http.Get(fmt.Sprintf("http://%s?id=%s", source, id))
 
-	if err != nil {
-		panic(err)
+	if err != nil || 200 != resp.StatusCode{
+		return models.ApiResult{
+			Source: source,
+			Data:   make(map[int]struct{}),
+		}
 	}
+
 	defer resp.Body.Close() // Ensure the response body is closed
 
 	body, err := ioutil.ReadAll(resp.Body)

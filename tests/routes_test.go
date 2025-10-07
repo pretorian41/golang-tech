@@ -26,7 +26,7 @@ func TestRoutes(t *testing.T) {
 			method:       "GET",
 			body:         nil,
 			expectedCode: 404,
-			expectedBody: "{\"error\":\"Cannot GET /api/v1/invalid-path\"}",
+			expectedBody: "{\"error\":\"Cannot GET /api/agg/invalid-path\"}",
 		},
 		{
 			testName:     "another invalid path",
@@ -34,14 +34,14 @@ func TestRoutes(t *testing.T) {
 			method:       "POST",
 			body:         nil,
 			expectedCode: 404,
-			expectedBody: "{\"error\":\"Cannot POST /api/v1/another-invalid-path\"}",
+			expectedBody: "{\"error\":\"Cannot POST /api/agg/another-invalid-path\"}",
 		},
 		{
 			testName:     "a valid path",
 			route:        "/api/agg/fetch/test",
 			method:       "GET",
 			body:         nil,
-			expectedBody: "",
+			expectedBody: "{\"avatar_url\":\"https://i.pravatar.cc/300\",\"email\":\"test@test.com\",\"id\":\"test\",\"name\":\"John Foo\"}",
 			expectedCode: 200,
 		},
 	}
